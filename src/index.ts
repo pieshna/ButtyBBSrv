@@ -8,6 +8,7 @@ import productoRoutes from './productos/producto.routes'
 import stockRotues from './stock/stock.routes'
 import productoProveedorRoutes from './producto_proveedor/producto_proveedor.routes'
 import ventaRoutes from './ventas/venta.routes'
+import detalleVentasRoutes from './detalle_ventas/detalle_ventas.routes'
 
 const app = express()
 app.use(express.json())
@@ -21,6 +22,7 @@ app.use('/productos', productoRoutes)
 app.use('/stock', stockRotues)
 app.use('/producto-proveedor', productoProveedorRoutes)
 app.use('/ventas', ventaRoutes)
+app.use('/detalle-ventas', detalleVentasRoutes)
 
 const PORT = process.env.PORT || 3000
 
