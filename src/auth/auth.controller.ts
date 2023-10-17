@@ -9,7 +9,7 @@ export async function login(req: Request, res: Response) {
     if (!usuario || usuario?.length === 0) {
       throw new Error('Usuario no encontrado')
     }
-    const matchPassword = await comparar(password, usuario.password)
+    const matchPassword = await comparar(password, usuario[0].password)
     if (!matchPassword) {
       throw new Error('Contraseña incorrecta')
     }
