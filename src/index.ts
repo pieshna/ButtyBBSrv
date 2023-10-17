@@ -1,4 +1,6 @@
 import express from 'express'
+import cors from 'cors'
+
 import rolRoutes from './roles/rol.routes'
 import usuarioRoutes from './usuarios/usuario.routes'
 import authRoutes from './auth/auth.routes'
@@ -12,6 +14,13 @@ import detalleVentasRoutes from './detalle_ventas/detalle_ventas.routes'
 
 const app = express()
 app.use(express.json())
+
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 
 app.use('/roles', rolRoutes)
 app.use('/usuarios', usuarioRoutes)

@@ -6,10 +6,10 @@ export async function login(req: Request, res: Response) {
   try {
     const { correo, password } = req.body
     const usuario = await authModel.findByEmail(correo)
-    if (!usuario) {
+    if (!usuario || usuario?.length === 0) {
       throw new Error('Usuario no encontrado')
     }
-    const matchPassword = comparar(password, usuario.password)
+    const matchPassword = await comparar(password, usuario.password)
     if (!matchPassword) {
       throw new Error('Contraseña incorrecta')
     }
