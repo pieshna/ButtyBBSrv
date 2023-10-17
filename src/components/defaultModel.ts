@@ -46,4 +46,8 @@ export class DefaultModel {
   async findByQuery(query: string, values?: any[]) {
     return this.query(`SELECT * FROM ${this.table} WHERE ${query}`, values)
   }
+
+  async executeQuery(query: string, values?: any[]) {
+    return this.query(query, values)
+  }
 }
