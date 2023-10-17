@@ -5,6 +5,7 @@ import authRoutes from './auth/auth.routes'
 import clienteRoutes from './clientes/cliente.routes'
 import proveedorRoutes from './proveedores/proveedor.routes'
 import productoRoutes from './productos/producto.routes'
+import stockRotues from './stock/stock.routes'
 
 const app = express()
 app.use(express.json())
@@ -15,6 +16,7 @@ app.use('/auth', authRoutes)
 app.use('/clientes', clienteRoutes)
 app.use('/proveedores', proveedorRoutes)
 app.use('/productos', productoRoutes)
+app.use('/stock', stockRotues)
 
 const PORT = process.env.PORT || 3000
 
