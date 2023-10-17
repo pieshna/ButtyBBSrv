@@ -8,6 +8,11 @@ export function encriptar(valor: string) {
   return hash
 }
 
-export function comparar(valor: string, hash: string) {
-  return bcrypt.compareSync(valor, hash)
+export async function comparar(valor: string, hash: string) {
+  try {
+    const match = await bcrypt.compare(valor, hash)
+    return match
+  } catch (error) {
+    return false
+  }
 }
