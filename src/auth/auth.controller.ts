@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import authModel from './auth.model'
 import { comparar } from '../components/enciprtar'
+import { generarToken } from './auth.utils'
 
 export async function login(req: Request, res: Response) {
   try {
@@ -13,7 +14,12 @@ export async function login(req: Request, res: Response) {
     if (!matchPassword) {
       throw new Error('Contraseña incorrecta')
     }
-    res.json({ message: 'Login correcto' })
+
+    const token = generarToken({
+      correo: usuario[0].correo,
+      rol: usuario[0].rol
+    })
+    res.json(token)
   } catch (e: any) {
     res.status(400).json({ message: e.message || e })
   }
