@@ -7,9 +7,8 @@ class AuthModel extends DefaultModel {
 
   async findByEmail(correo: string) {
     const sql =
-      'SELECT u.correo,u.password,r.nombre as rol FROM usuarios as u join roles as r on u.rol_id = r.id WHERE u.correo = ? AND u.estado = 1 LIMIT 1'
+      'SELECT u.correo,u.password,r.nombre as rol, CONCAT(u.nombre, " ", u.apellido) as usuario FROM usuarios as u join roles as r on u.rol_id = r.id WHERE u.correo = ? AND u.estado = 1 LIMIT 1'
     const result = await this.executeQuery(sql, [correo])
-    console.log(result)
     return result
   }
 }
