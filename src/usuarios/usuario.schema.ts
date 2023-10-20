@@ -8,7 +8,7 @@ export const UsuarioSchema = z.object({
   password: z.string().min(6),
   foto: z.string().optional(),
   rol_id: z.number(),
-  estado: z.boolean().optional(),
+  estado: z.number().optional(),
   created_at: z.date().optional(),
   updated_at: z.date().optional()
 })
