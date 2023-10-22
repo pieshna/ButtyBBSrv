@@ -30,3 +30,10 @@ export async function deleteStock(req: Request, res: Response) {
   const stock = await stockModel.delete(Number(id))
   res.json(stock)
 }
+
+export async function updateStockByProduct(req: Request, res: Response) {
+  const { id } = req.params
+  const { body } = req
+  const stock = await stockModel.updateByProduct(Number(id), body)
+  res.json(stock)
+}
