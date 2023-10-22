@@ -30,3 +30,8 @@ export async function deleteProducto(req: Request, res: Response) {
   const producto = await productoModel.delete(Number(id))
   res.json(producto)
 }
+
+export async function getProductsWithStock(req: Request, res: Response) {
+  const productos = await productoModel.findProductWithStock()
+  res.json(productos)
+}
