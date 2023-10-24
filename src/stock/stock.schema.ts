@@ -9,3 +9,7 @@ export const stockSchema = z.object({
   created_at: z.date().optional(),
   updated_at: z.date().optional()
 })
+
+export const stockCompraSchema = z.object({
+  unidades: z.number()
+})

@@ -37,3 +37,10 @@ export async function updateStockByProduct(req: Request, res: Response) {
   const stock = await stockModel.updateByProduct(Number(id), body)
   res.json(stock)
 }
+
+export async function createCompra(req: Request, res: Response) {
+  const { id } = req.params
+  const { body } = req
+  const stock = await stockModel.createCompra(Number(id), body)
+  res.json(stock)
+}
