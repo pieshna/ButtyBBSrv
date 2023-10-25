@@ -37,10 +37,8 @@ export async function createManyDetalleVenta(req: Request, res: Response) {
   const esperar = await body.map(async (detalleVenta: any) => {
     const unidades = await stockModel.findByProduct(detalleVenta.producto_id)
     if (unidades[0].unidades >= detalleVenta.cantidad) {
-      console.log('tengo suficientes unidades')
       return true
     } else {
-      console.log('no tengo suficientes unidades')
       return false
     }
   })
