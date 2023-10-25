@@ -30,3 +30,9 @@ export async function deleteDetalleVenta(req: Request, res: Response) {
   const detalleVenta = await detalleVentaModel.delete(Number(id))
   res.json(detalleVenta)
 }
+
+export async function createManyDetalleVenta(req: Request, res: Response) {
+  const { body } = req
+  const detalleVenta = await detalleVentaModel.createMany(body)
+  res.json(detalleVenta)
+}

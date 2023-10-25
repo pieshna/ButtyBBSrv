@@ -8,3 +8,5 @@ export const detalle_ventasSchema = z.object({
   created_at: z.date().optional(),
   updated_at: z.date().optional()
 })
+
+export const detalle_ventasManySchema = z.array(detalle_ventasSchema)
