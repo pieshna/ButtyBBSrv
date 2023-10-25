@@ -40,9 +40,6 @@ export class DefaultModel {
 
     const flattenedValues = values.reduce((acc, val) => acc.concat(val), [])
 
-    console.log(sql)
-    console.log(flattenedValues)
-
     return this.query(sql, flattenedValues)
   }
 
