@@ -4,7 +4,7 @@ export const ventaSchema = z.object({
   id: z.number().optional(),
   empleado_id: z.number(),
   cliente_id: z.number(),
-  fecha: z.date(),
+  fecha: z.string(),
   subtotal: z.number(),
   total: z.number(),
   created_at: z.date().optional(),
