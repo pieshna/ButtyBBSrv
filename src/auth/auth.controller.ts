@@ -16,6 +16,7 @@ export async function login(req: Request, res: Response) {
     }
 
     const token = generarToken({
+      usuarioId: usuario[0].id,
       usuario: usuario[0].usuario,
       correo: usuario[0].correo,
       rol: usuario[0].rol

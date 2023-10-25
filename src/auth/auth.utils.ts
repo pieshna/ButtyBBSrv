@@ -3,6 +3,7 @@ import { config } from 'dotenv'
 config()
 
 interface Payload {
+  usuarioId: number
   usuario: string
   correo: string
   rol: string
