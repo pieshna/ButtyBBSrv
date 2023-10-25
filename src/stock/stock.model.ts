@@ -31,6 +31,24 @@ class StockModel extends DefaultModel {
     const updated = await this.update(stock.id, newStock)
     return updated
   }
+
+  async createVenta(productId: number, data: any) {
+    const result = await this.findByProduct(productId)
+    const stock = result[0]
+    const descortarUnidades = stock.unidades - data.unidades
+    if (descortarUnidades < 0) {
+      return 'No hay suficientes unidades en stock'
+    }
+    const newStock = {
+      ...stock,
+      unidades: descortarUnidades
+    }
+    if (newStock.created_at) delete newStock.created_at
+    if (newStock.updated_at) delete newStock.updated_at
+    if (newStock.id) delete newStock.id
+    const updated = await this.update(stock.id, newStock)
+    return updated
+  }
 }
 
 export default new StockModel()
