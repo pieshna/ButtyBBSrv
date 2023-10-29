@@ -20,7 +20,25 @@ class DetalleVentas extends DefaultModel {
   }
 
   async findByVenta(id: number) {
-    const result = await this.findByQuery('venta_id =?', [id])
+    const resultVenta = await this.findByQuery('venta_id =?', [id])
+    if (resultVenta.length === 0) return ['No hay detalle de venta']
+    const sql = `
+    SELECT dv.id,dv.venta_id, dv.cantidad, v.fecha, dv.cantidad*s.precio_venta as subtotal,v.total, v.created_at, p.nombre as producto_nombre, s.precio_venta, s.descripcion, CONCAT(c.apellido,', ',c.nombre) as cliente_nombre,c.nit,c.correo, CONCAT(u.apellido,', ',u.nombre) as empleado
+      FROM detalle_ventas as dv 
+      LEFT JOIN ventas as v
+      ON dv.venta_id = v.id
+      LEFT JOIN productos as p
+      ON dv.producto_id = p.id
+      LEFT JOIN stock as s
+      ON p.id = s.producto_id
+      LEFT JOIN clientes as c
+      ON v.cliente_id = c.id
+      LEFT JOIN usuarios as u
+      ON v.empleado_id = u.id
+      WHERE dv.venta_id = ?
+    `
+    const result = await this.executeQuery(sql, [resultVenta[0].venta_id])
+
     return result
   }
 }
