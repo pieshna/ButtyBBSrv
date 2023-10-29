@@ -5,7 +5,8 @@ import {
   getProducto,
   getProductos,
   updateProducto,
-  getProductsWithStock
+  getProductsWithStock,
+  getProductosParaVenta
 } from './producto.controller'
 import { validateSchema } from '../components/middleware/schema'
 import { productoSchema } from './producto.schema'
@@ -14,6 +15,7 @@ const router = Router()
 
 router.get('/', getProductos)
 router.get('/with-stock', getProductsWithStock)
+router.get('/para-venta', getProductosParaVenta)
 router.get('/:id', getProducto)
 router.post('/', validateSchema(productoSchema), createProducto)
 router.put('/:id', validateSchema(productoSchema), updateProducto)

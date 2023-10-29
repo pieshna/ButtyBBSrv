@@ -35,3 +35,8 @@ export async function getProductsWithStock(req: Request, res: Response) {
   const productos = await productoModel.findProductWithStock()
   res.json(productos)
 }
+
+export async function getProductosParaVenta(req: Request, res: Response) {
+  const productos = await productoModel.productosParaVenta()
+  res.json(productos)
+}

@@ -11,6 +11,15 @@ class ProductoModel extends DefaultModel {
     const result = await this.executeQuery(sql)
     return result
   }
+  async productosParaVenta() {
+    const sql = `
+    SELECT p.id,p.nombre,p.imagen, s.precio_venta as precio_compra, p.created_at, s.updated_at 
+    from productos as p 
+    left join stock as s on p.id = s.producto_id
+    `
+    const result = await this.executeQuery(sql)
+    return result
+  }
 }
 
 export default new ProductoModel()
