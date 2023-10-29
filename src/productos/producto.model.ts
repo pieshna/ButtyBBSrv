@@ -13,7 +13,7 @@ class ProductoModel extends DefaultModel {
   }
   async productosParaVenta() {
     const sql = `
-    SELECT p.id,p.nombre,p.imagen, s.precio_venta as precio_compra, p.created_at, s.updated_at 
+    SELECT p.id,p.nombre,s.unidades, s.precio_venta as precio_compra, p.created_at, s.updated_at 
     from productos as p 
     left join stock as s on p.id = s.producto_id
     `
